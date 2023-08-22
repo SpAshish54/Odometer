@@ -6,14 +6,14 @@
 </head>
 <body>
     <h1>Odometer</h1>
-    <form method="get">
+    <form method="post" action="odometer">
+        <!-- 
         <label for="numberInput">Enter a number with digits in increasing order:</label>
-        <input type="number" id="numberInput" name="numberInput" required>
-        <button type="submit" name="action" value="left">Get Predecessor</button>
-        <button type="submit" name="action" value="right">Get Successor</button>
+        <input type="number" id="numberInput" name="numberInput" required>			
+		-->
+        <input type="submit" name="action" value="prev" />
+        <input type="submit" name="action" value="next" />
     </form>
-    <p> Current Reading <span th:text= "${current_reading}"></span></p>
-    <p> Next Reading <span th:text= "${next_reading}"></span></p>
-    <p> Previous Reading <span th:text= "${previous_reading}"></span></p>
+    <p> Current Reading: <span th:text= "${reading}"></span></p>
 </body>
 </html>
