@@ -6,6 +6,7 @@ public class OdometerController {
 	private static final String DIGITS = "123456789";
 
 	  private int reading;
+	  
 	  private static int getMinReading(int size) {
 		    return Integer.valueOf(DIGITS.substring(0, size));
 		  }
@@ -21,8 +22,8 @@ public class OdometerController {
 		  public int getSize() {
 		    return getSize(this.reading);
 		  }
-		  public OdometerController(int newReading) {
-			  reading = newReading;
+		  public OdometerController(int size) {
+			  reading = getMinReading(size);
 		  }
 		  
 		  public int getCurrentReading() {
@@ -41,7 +42,7 @@ public class OdometerController {
 			    return isAscending(reading / 10);
 			  }
 
-		  public int getNextReading() {
+		  public void getNextReading() {
 			  do {
 			      if (reading == getMaxReading(getSize(reading))) {
 			        reading = getMinReading(getSize(reading));
@@ -49,10 +50,11 @@ public class OdometerController {
 			        reading++;
 			      }
 			    } while (!isAscending(reading));
-			  return reading;
 		  }
-
-		  public int getPreviousReading() {
+		  public void reset() {
+			  reading = getMinReading(getSize());
+		  }
+		  public void getPreviousReading() {
 			    do {
 			      if (reading == getMinReading(getSize(reading))) {
 			        reading = getMaxReading(getSize(reading));
@@ -60,7 +62,6 @@ public class OdometerController {
 			        reading--;
 			      }
 			    } while (!isAscending(reading));
-			    return reading;
 			  }
 			    
 }
